@@ -1,10 +1,11 @@
+// App.tsx
 import React from "react";
-import WebSocketClient from "./WebSocketClient";
+import MainUI from "./components/MainUI"; // Import MainUI
 
 const App: React.FC = () => {
   return (
     <div>
-      <WebSocketClient />
+      <MainUI />
     </div>
   );
 };
