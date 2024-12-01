@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <button onclick="executeScript('start_timer')">Get Time</button>
+    <button onclick="executeScript('start_calculator')">Run Calculator (3 + 5)</button>
+    <pre id="output"></pre>
+
+    <script>
+        // 建立 WebSocket 连接
+        const socket = new WebSocket("ws://localhost:8000/ws");
+
+        socket.onopen = function() {
+            console.log("WebSocket connection established.");
+        };
+
+        socket.onmessage = function(event) {
+            console.log("Received message: ", event.data);  // 打印接收到的消息
+            const outputElement = document.getElementById("output");
+            outputElement.textContent += event.data + "\n";  // 显示消息
+            outputElement.scrollTop = outputElement.scrollHeight;  // 滚动到底部
+        };
+
+        socket.onclose = function() {
+            console.log("WebSocket connection closed.");
+        };
+
+        socket.onerror = function(error) {
+            console.error("WebSocket error:", error);
+        };
+
+        // 发送指令到服务器，执行不同的脚本
+        function executeScript(command) {
+            if (socket.readyState === WebSocket.OPEN) {
+                console.log(`Sending command to execute: ${command}`);
+                socket.send(command);  // 发送命令到后端
+            } else {
+                console.log("WebSocket not connected yet, try again later.");
+            }
+        }
+    </script>
+</body>
+</html>
