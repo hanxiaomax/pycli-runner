@@ -1,0 +1,28 @@
+{
+  "commands": {
+    "start_timer": {
+      "description": "Start the timer script",
+      "parameters": []
+    },
+    "start_calculator": {
+      "description": "Start the calculator script",
+      "parameters": ["num1", "num2"]
+    }
+  },
+  "responses": {
+    "success": {
+      "description": "Successful execution",
+      "data": {
+        "message": "string",
+        "timestamp": "string"
+      }
+    },
+    "error": {
+      "description": "Execution failed",
+      "data": {
+        "message": "string",
+        "error_code": "integer"
+      }
+    }
+  }
+}

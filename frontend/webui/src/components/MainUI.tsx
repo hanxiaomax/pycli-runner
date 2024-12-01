@@ -57,7 +57,7 @@ const MainUI: React.FC = () => {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={() => sendCommand("start_timer")}
+            onClick={() => sendCommand("22")}
             sx={{ marginBottom: 2 }}
           >
             Start Timer

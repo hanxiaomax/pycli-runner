@@ -1,7 +1,3 @@
-# websocket_server.py
-from fastapi import WebSocket
-
-
 class WebSocketServer:
     def __init__(self,websocket):
         self.websocket = websocket
